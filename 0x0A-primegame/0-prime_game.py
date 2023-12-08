@@ -8,7 +8,7 @@ def isWinner(x, nums):
     """
     if x < 1 or not nums:
         return None
-    debs_wins, erics_wins = 0, 0
+    marias_wins, bens_wins = 0, 0
     # generate primes with a limit of the maximum number in nums
     n = max(nums)
     primes = [True for _ in range(1, n + 1, 1)]
@@ -21,8 +21,8 @@ def isWinner(x, nums):
     # filter the number of primes less than n in nums for each round
     for _, n in zip(range(x), nums):
         primes_count = len(list(filter(lambda x: x, primes[0: n])))
-        erics_wins += primes_count % 2 == 0
-        debs_wins += primes_count % 2 == 1
-    if debs_wins == erics_wins:
+        bens_wins += primes_count % 2 == 0
+        marias_wins += primes_count % 2 == 1
+    if marias_wins == bens_wins:
         return None
-    return 'Deb' if debs_wins > erics_wins else 'Eric'
+    return 'Maria' if marias_wins > bens_wins else 'Ben'
